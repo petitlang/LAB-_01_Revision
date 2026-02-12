@@ -22,8 +22,12 @@
 ---
 
 ## Team members and assigned exercises
+Team: T14
+
 Yuefan LIU: 1, 4
+
 Mouzheng LI: 2, 5
+
 Xinyue LI: 3, 6
 
 ---
