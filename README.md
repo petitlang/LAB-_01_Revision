@@ -19,16 +19,22 @@
 └── test_exercise6_first_unique.xx
 ~~~
 
+---
+
 ## Team members and assigned exercises
 Yuefan LIU: 1, 4
 Mouzheng LI: 2, 5
 Xinyue LI: 3, 6
+
+---
 
 ## Dependencies and Language version
 Please use **python 3.11 or higher version**
 ~~~
 pip install pytest // for testing python scripts
 ~~~
+
+---
 
 ## Instructions
 
@@ -37,6 +43,8 @@ For test, please first install dependencies, and run
 python pytest 
 ~~~
 in your terminal
+
+---
 
 ##  Brief description of each solution
 
@@ -49,6 +57,7 @@ The function is_balanced(s) checks whether a string "s" containing parentheses "
 
 This exercise implements three different methods to rotate an array to the right by k positions. RotateTemp uses an auxiliary array to place each element at its rotated position before copying it back, RotateOneByOne performs the rotation step by step by repeatedly shifting elements to the right, and RotateReverse applies the reversal technique by reversing the entire array and then reversing the first k elements and the remaining elements separately. These approaches demonstrate different trade-offs between time complexity and additional memory usage.
 
+---
 
 ## Complexity analysis summary
 
@@ -66,5 +75,4 @@ For the array rotation problem,
 
 **RotateReverse** runs in **O(n) time** because each element is moved a constant number of times while only requiring **O(1) additional space**.
 
-
-
+---
