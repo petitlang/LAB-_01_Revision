@@ -10,15 +10,6 @@
 ├── exercise5_array_rotation.xx
 ├── exercise6_first_unique.xx
 └── README.md (Team members and assigned exercises, Brief description of each solution, Complexity analysis summary)
-/test/
-├── test_exercise1_integer_mirror.xx (xx is dependent of the used programming language)
-├── test_exercise2_balanced_symbols.xx
-├── test_exercise3_merge_intervals.xx
-├── test_exercise4_polynomial_eval.xx
-├── test_exercise5_array_rotation.xx
-└── test_exercise6_first_unique.xx
-~~~
-
 ---
 
 ## Team members and assigned exercises
@@ -34,9 +25,7 @@ Xinyue LI: 3, 6
 
 ## Dependencies and Language version
 Please use **python 3.11 or higher version**
-~~~
-pip install pytest // for testing python scripts
-~~~
+
 
 ---
 
