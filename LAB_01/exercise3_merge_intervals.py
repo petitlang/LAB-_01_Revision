@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
 
-def merge_overlapping_intervals(interval):
+def mergeOverLappingIntervals(interval):
 
     if len(interval) == 0:
         return []
@@ -35,7 +35,7 @@ def tests():
 
 
     for interval, expected in test_cases:
-        output = merge_overlapping_intervals(interval)
+        output = mergeOverLappingIntervals(interval)
         print(f"Input:  {interval}")
         print(f"Output: {output}")
         print(f"Expected: {expected}")
