@@ -30,6 +30,56 @@ Please use **JDK 17 or a higher version**.
 
 ---
 
+## Instructions
+
+For using Java programme: 
+
+**Exercise 1 — Integer Mirror — Usage (Java)**
+
+Input format:
+
+* One non-negative integer `n`
+
+Output:
+
+* The integer obtained by reversing the decimal digits of `n` (no string conversion)
+
+Example:
+
+* Input:
+
+  * `315`
+* Output:
+
+  * `513`
+
+Additional examples:
+
+* Input: `0` → Output: `0`
+* Input: `400` → Output: `4`
+
+**Exercise 4 — Polynomial Evaluation (Horner) — Usage (Java)**
+
+Input format:
+
+* First line: `m` (number of coefficients)
+* Second line: `m` real numbers `a0 a1 ... a(m-1)` where `ai` is the coefficient of `x^i`
+* Last line: `x` (real number)
+
+Example:
+
+* Input:
+
+  * `4`
+  * `3 -2 0 5`
+  * `2.0`
+* Output:
+
+  * `39.0`
+
+
+---
+
 ##  Brief description of each solution
 
 ### Solution of exercise2_balanced_symbols
