@@ -32,6 +32,10 @@ def test():
         ("loveleetcode", 2),
         ("aabb", -1),
         ("ddaccabba", 8),
+
+        ("", -1),                
+        ("a", 0),                
+        ("aaaa", -1),             
     ]
 
     print("=== First Unique Character Tests ===\n")
