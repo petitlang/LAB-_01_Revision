@@ -10,6 +10,8 @@
 ├── exercise5_array_rotation.xx
 ├── exercise6_first_unique.xx
 └── README.md (Team members and assigned exercises, Brief description of each solution, Complexity analysis summary)
+~~~
+
 ---
 
 ## Team members and assigned exercises
@@ -25,17 +27,6 @@ Xinyue LI: 3, 6
 
 ## Dependencies and Language version
 Please use **python 3.11 or higher version**
-
-
----
-
-## Instructions
-
-For test, please first install dependencies, and run 
-~~~
-python pytest 
-~~~
-in your terminal
 
 ---
 
