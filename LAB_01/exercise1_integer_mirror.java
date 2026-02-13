@@ -1,3 +1,4 @@
+package LAB_01;
 import java.util.Scanner;
 
 public class exercise1_integer_mirror{
