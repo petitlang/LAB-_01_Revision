@@ -1,7 +1,7 @@
 ## File Structure:
 ~~~
 /LAB _02/
-├── exercise1_
+├── exercise1_message_analysis.java
 ├── exercise2_mutual_friends.py
 ├── exercise3_find_recommendation.py
 ├── exercise4_mutual_followers.py
@@ -92,7 +92,7 @@ Repeat>3: false
 
 #  Brief description of each solution
 
-## Solution of exercise1_classify_message 
+## Solution of exercise1_message_analysis 
 
 This solution analyzes a friend request message by scanning the string character by character.
 
@@ -166,7 +166,7 @@ It reflects both popularity and activity within the network.
 
 # Complexity analysis summary
 
-## Complexity of exercise1_classify_message
+## Complexity of exercise1_message_analysis
 
 Let ( n ) be the length of the message.
 
