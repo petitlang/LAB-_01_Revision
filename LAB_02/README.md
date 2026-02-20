@@ -37,6 +37,11 @@ The intersection and difference functions iterate through one set and perform co
 The union function constructs a new set containing all unique elements from both input sets to avoid modifying the original data.
 Based on these operations, the mutual friend coefficient is computed using the Jaccard similarity, defined as the ratio between the size of the intersection and the size of the union.
 Special edge cases, such as empty sets and unbalanced set sizes, are handled to ensure correctness and robustness.
+_
+### Solution of exercise3_find_recommendation
+This project implements a recommendation system based on user similarity and collaborative filtering.
+The algorithm first calculates pairwise similarity between users using cosine similarity, then selects the top K users with the highest similarity (excluding existing friends).
+Based on these similar users, the system recommends new interests by averaging these users' preferences for interests that the target user has not yet rated.
 
 ### Solution of exercise4_mutual_followers
 
@@ -77,6 +82,13 @@ The **union** operation iterates over both sets once, leading to a **time comple
 
 The **mutual friend coefficient (Jaccard similarity)** is computed using the sizes of the intersection and union, and therefore has the same overall time complexity.
 In terms of space complexity, all operations require **additional space proportional to the size of the result sets**, leading to **a space complexity of O(m + n)** in the worst case.
+
+### Complexity of exercise3_find_recommendation
+The time complexity of cosine similarity calculation is O(U × I).
+Selecting the K most similar users has a time complexity of O(U log U).
+The filtering step iterates through all interests and the selected K users, with a time complexity of O(K × I).
+Each similarity calculation iterates through all interest dimensions, resulting in an overall time complexity of O(U² × I).
+
 
 ### Complexity of exercise4_mutual_followers
 
