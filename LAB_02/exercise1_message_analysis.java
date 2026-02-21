@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class exercise1_message_analysis {
 
 
-    // 用于返回分析结果
+    
     public static final class Result {
-        public final int uppercaseCount;          // 大写字母数
-        public final int punctuationCount;        // '!' 和 '?' 的总数
-        public final double capsRatio;            // uppercase / alphabetic（alphabetic=0 则为 0）
-        public final String label;                // CALM / URGENT / AGGRESSIVE
-        public final boolean repeatedMoreThan3;   // 是否存在连续重复字符长度 >= 4
+        public final int uppercaseCount;          
+        public final int punctuationCount;        
+        public final double capsRatio;            
+        public final String label;                
+        public final boolean repeatedMoreThan3;   
 
         public Result(int uppercaseCount, int punctuationCount, double capsRatio,
                       String label, boolean repeatedMoreThan3) {
@@ -31,18 +31,16 @@ public class exercise1_message_analysis {
         }
     }
 
-    /**
-     * 分析一条 message（单次扫描）
-     */
+    
     public static Result analyze(String message) {
         if (message == null) message = "";
 
-        int upperCount = 0;   // 大写字母数
-        int alphaCount = 0;   // 字母总数（ASCII）
-        int puncCount = 0;    // ! 和 ? 总数
+        int upperCount = 0;   
+        int alphaCount = 0;   
+        int puncCount = 0;    
         boolean hasRepeatSpam = false;
 
-        // 连续重复检测
+        
         char prev = 0;
         int runLen = 0;
         boolean hasPrev = false;
@@ -50,7 +48,7 @@ public class exercise1_message_analysis {
         for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
 
-            // 1) 字母/大写统计（按 ASCII）
+            
             if (isAsciiAlphabetic(c)) {
                 alphaCount++;
                 if (isAsciiUppercase(c)) {
@@ -58,12 +56,12 @@ public class exercise1_message_analysis {
                 }
             }
 
-            // 2) 标点统计：只算 ! 和 ?
+            
             if (c == '!' || c == '?') {
                 puncCount++;
             }
 
-            // 3) 连续重复检测：只做相邻字符比较
+        
             if (!hasPrev) {
                 runLen = 1;
                 hasPrev = true;
@@ -79,10 +77,10 @@ public class exercise1_message_analysis {
             }
         }
 
-        // 4) caps ratio（避免除 0）
+        
         double capsRatio = (alphaCount == 0) ? 0.0 : (upperCount * 1.0 / alphaCount);
 
-        // 5) 分类（强规则优先）
+       
         String label;
         if (capsRatio >= 0.6 || puncCount >= 5) {
             label = "AGGRESSIVE";
@@ -95,21 +93,17 @@ public class exercise1_message_analysis {
         return new Result(upperCount, puncCount, capsRatio, label, hasRepeatSpam);
     }
 
-    // 判断是否为 ASCII 字母
+    
     private static boolean isAsciiAlphabetic(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
-    // 判断是否为 ASCII 大写字母
+    
     private static boolean isAsciiUppercase(char c) {
         return (c >= 'A' && c <= 'Z');
     }
 
-    /**
-     * 交互式入口：
-     * - 输入一行字符串，立即输出分析结果
-     * - 输入 exit 结束程序
-     */
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -122,7 +116,7 @@ public class exercise1_message_analysis {
 
             String line = sc.nextLine();
 
-            // 退出条件
+            
             if (line.trim().equalsIgnoreCase("exit")) {
                 System.out.println("Bye.");
                 break;
