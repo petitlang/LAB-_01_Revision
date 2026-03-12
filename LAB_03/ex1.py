@@ -20,7 +20,7 @@ class DoublyLinkedList:
         self.current = None
         self.size = 0
 
-    # Function add_story(node)
+   
     def add_story(self, node):
         if self.head is None:
             self.head = node
@@ -33,7 +33,7 @@ class DoublyLinkedList:
 
         self.size = self.size + 1
 
-    # Function remove_story(story_id)
+
     def remove_story(self, story_id):
         temp = self.head
 
@@ -61,21 +61,21 @@ class DoublyLinkedList:
 
         return False
 
-    # Function move_forward()
+
     def move_forward(self):
         if self.current is not None and self.current.next is not None:
             self.current = self.current.next
 
         return self.current
 
-    # Function move_backward()
+
     def move_backward(self):
         if self.current is not None and self.current.prev is not None:
             self.current = self.current.prev
 
         return self.current
 
-    # Function jump_to(story_id)
+
     def jump_to(self, story_id):
         temp = self.head
 
@@ -88,7 +88,7 @@ class DoublyLinkedList:
 
         return None
 
-    # Function insert_after(current_id, new_story)
+
     def insert_after(self, current_id, new_story):
         temp = self.head
 
@@ -110,7 +110,7 @@ class DoublyLinkedList:
 
         return False
 
-    # Function display_around_current(k)
+
     def display_around_current(self, k):
         if self.current is None:
             return None
