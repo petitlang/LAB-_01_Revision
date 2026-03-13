@@ -140,6 +140,50 @@ class DoublyLinkedList:
             count = count + 1
 
         return result
+    
+
+
+    
+    def track_view(self):
+        if self.current is not None:
+            self.current.views = self.current.views + 1
+
+
+    def most_viewed(self):
+        if self.head is None:
+            return None
+
+        max_node = self.head
+        temp = self.head
+
+        while temp is not None:
+            if temp.views > max_node.views:
+                max_node = temp
+            temp = temp.next
+
+        return max_node
+
+
+    def reorder_by_views(self):
+        current = self.head
+
+        while current is not None:
+
+            max_node = current
+            temp = current.next
+
+            while temp is not None:
+                if temp.views > max_node.views:
+                    max_node = temp
+                temp = temp.next
+
+            current.story_id, max_node.story_id = max_node.story_id, current.story_id
+            current.user_id, max_node.user_id = max_node.user_id, current.user_id
+            current.content_preview, max_node.content_preview = max_node.content_preview, current.content_preview
+            current.timestamp, max_node.timestamp = max_node.timestamp, current.timestamp
+            current.views, max_node.views = max_node.views, current.views
+
+            current = current.next
 
 
 
