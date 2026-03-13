@@ -106,7 +106,22 @@ inserting a story after another one, and displaying a range of stories around th
 
 ## Solution of exercise2
 
+In this exercise, we implemented an activity feed processing system using two fundamental linear data structures: a stack and a queue.
+The goal is to simulate how a social platform manages recent user activities and incoming notifications.
 
+The recent activity history is implemented as a pointer-based stack, where each node stores a user action such as like, comment, share, or follow.
+Because a stack follows the Last-In-First-Out (LIFO) principle, the most recent activity is always accessed first.
+Core operations include pushing a new activity, popping the most recent activity, peeking at the latest action without removing it, and undoing the last action.
+
+The notification system is implemented as a pointer-based queue.
+Each node represents a notification, and the queue follows the First-In-First-Out (FIFO) rule so that the oldest notification is processed first.
+Key operations include enqueueing a new notification, dequeueing the oldest notification, checking the front element, and inserting urgent notifications at the front using a priority enqueue mechanism.
+
+Finally, both structures are integrated into a FeedProcessor system.
+This component coordinates the interaction between recent activities and incoming notifications.
+Notifications can be transferred from the queue into the activity stack, processed in batches, or moved to a processed log when the activity history is cleared.
+
+The implementation is written in Java, using pointer-style node references to represent dynamic linked data structures.
 _
 ## Solution of exercise3_engagement_based_priority_queue
 This solution implements a priority queue of posts using a sorted singly linked list. Posts are ordered by engagement_score in descending order, so the highest-priority post is always at the head. It supports insertion, removal, score update, top-k retrieval, and decay for old posts, which matches the requirements of the exercise.
@@ -152,7 +167,74 @@ This function reorganizes the feed so that the most viewed stories appear first.
 
 ## Complexity of exercise2
 
+Complexity of exercise2_activity_feed_processing_with_stacks_and_queues
 
+Stack Operations (Recent Activity)
+
+push(activity): O(1)
+A new node is inserted at the top of the stack.
+
+pop(): O(1)
+The top node is removed and returned.
+
+peek(): O(1)
+The algorithm directly reads the value of the top node.
+
+is_empty(): O(1)
+It checks whether the top pointer is NULL.
+
+size(): O(1)
+The stack maintains a counter of elements.
+
+display_recent(n): O(n)
+The algorithm traverses up to n nodes starting from the top.
+
+undo_last(): O(1)
+It removes the top element and pushes it into the undo stack.
+
+Queue Operations (Notification Queue)
+
+enqueue(notification): O(1)
+The new notification is added at the rear of the queue.
+
+dequeue(): O(1)
+The front node is removed and returned.
+
+priority_enqueue(notification): O(1)
+An urgent notification is inserted at the front of the queue.
+
+front(): O(1)
+The algorithm directly accesses the front node.
+
+is_empty(): O(1)
+It checks whether the front pointer is NULL.
+
+size(): O(1)
+The queue maintains a counter of elements.
+
+display_pending(): O(n)
+The queue is traversed from front to rear.
+
+FeedProcessor Operations
+
+process_incoming(): O(1)
+One notification is dequeued and pushed into the activity stack.
+
+batch_process(k): O(k)
+The algorithm processes the first k notifications in the queue.
+
+clear_history(): O(n)
+All activities in the stack are popped and inserted into the processed log.
+
+get_stats(): O(1)
+The function simply returns the sizes of the three structures.
+
+Space Complexity
+
+Space Complexity: O(n)
+
+The system stores activities and notifications using linked nodes.
+Each node contains the data and a pointer to the next node, so the memory usage grows linearly with the number of elements.
 
 ## Complexity of exercise3_engagement_based_priority_queue
 For Time Complexity :
