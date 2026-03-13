@@ -104,45 +104,12 @@ inserting a story after another one, and displaying a range of stories around th
 
 ---
 
-## Solution of exercise2_mutual_friends
+## Solution of exercise2
 
-This project implements basic set operations including intersection, difference, and union using Python sets.
-The intersection and difference functions iterate through one set and perform constant-time membership checks in the other set.
-The union function constructs a new set containing all unique elements from both input sets to avoid modifying the original data.
-Based on these operations, the mutual friend coefficient is computed using the Jaccard similarity, defined as the ratio between the size of the intersection and the size of the union.
-Special edge cases, such as empty sets and unbalanced set sizes, are handled to ensure correctness and robustness.
+
 _
-## Solution of exercise3_find_recommendation
-This project implements a recommendation system based on user similarity and collaborative filtering.
-The algorithm first calculates pairwise similarity between users using cosine similarity, then selects the top K users with the highest similarity (excluding existing friends).
-Based on these similar users, the system recommends new interests by averaging these users' preferences for interests that the target user has not yet rated.
-
-## Solution of exercise4_mutual_followers
-
-#### Follow / Unfollow
-These solutions update the adjacency matrix to represent a follow or unfollow action.
-Setting matrix[follower][followee] to True indicates a follow relationship, while setting it to False removes it.
-Both operations run in constant time.
-
-#### Is_following
-This solution checks whether a directed follow relationship exists between two users by directly accessing the adjacency matrix.
-It returns a boolean value and runs in constant time.
-
-#### Get_followers
-This solution retrieves all users who follow a given user by scanning the corresponding column in the adjacency matrix.
-Each row is checked to determine whether a follow relationship exists.
-
-#### Get_following
-This solution retrieves all users that a given user follows by scanning the corresponding row in the adjacency matrix.
-Each column entry is checked for an existing follow relationship.
-
-#### Mutual_follows
-This solution detects mutual follow relationships by examining pairs of users and checking whether both directed edges exist between them.
-Only unique pairs are returned to avoid duplicates.
-
-#### Influence_score
-This solution computes a user’s influence score as the sum of their followers and followings divided by the total number of users.
-It reflects both popularity and activity within the network.
+## Solution of exercise3_engagement_based_priority_queue
+This solution implements a priority queue of posts using a sorted singly linked list. Posts are ordered by engagement_score in descending order, so the highest-priority post is always at the head. It supports insertion, removal, score update, top-k retrieval, and decay for old posts, which matches the requirements of the exercise.
 
 ---
 
@@ -183,20 +150,43 @@ This function reorganizes the feed so that the most viewed stories appear first.
 
 ---
 
-## Complexity of exercise2_mutual_friends
+## Complexity of exercise2
 
-For the mutual friends detection problem, the algorithm represents each user’s friend list as a hash-based set.
-The **intersection and difference** operations iterate over one set and perform constant-time membership checks in the other set, resulting in a **time complexity of O(min(m, n)) on average**, where m and n are the sizes of the two friend sets.
-The **union** operation iterates over both sets once, leading to a **time complexity of O(m + n)**.
 
-The **mutual friend coefficient (Jaccard similarity)** is computed using the sizes of the intersection and union, and therefore has the same overall time complexity.
-In terms of space complexity, all operations require **additional space proportional to the size of the result sets**, leading to **a space complexity of O(m + n)** in the worst case.
 
-## Complexity of exercise3_find_recommendation
-The time complexity of cosine similarity calculation is O(U × I).
-Selecting the K most similar users has a time complexity of O(U log U).
-The filtering step iterates through all interests and the selected K users, with a time complexity of O(K × I).
-Each similarity calculation iterates through all interest dimensions, resulting in an overall time complexity of O(U² × I).
+## Complexity of exercise3_engagement_based_priority_queue
+For Time Complexity :
 
+enqueue(post): O(n)
+The list must be traversed to find the correct insertion position to maintain descending order of engagement_score.
+
+dequeue_max(): O(1)
+The highest-priority post is always at the head of the list, so removal is constant time.
+
+peek_max(): O(1)
+The head node already stores the maximum priority element.
+
+is_empty(): O(1)
+It only checks whether the head pointer is NULL.
+
+size(): O(1)
+The queue maintains a counter of the number of posts.
+
+update_score(post_id, ...): O(n)
+The algorithm must traverse the list to find the post (O(n)) and then reinsert it in sorted order (O(n)), but overall complexity remains O(n).
+
+refresh_all(): O(n²)
+Each post is removed and reinserted into a new sorted queue, and each insertion costs up to O(n).
+
+get_top_k(k): O(k)
+The algorithm traverses the first k nodes of the list.
+
+decay_older_than(timestamp): O(n²)
+It first scans all posts (O(n)) and then calls refresh_all() which re-sorts the queue.
+
+Space Complexity
+
+Space Complexity: O(n)
+The queue stores n posts in a linked list. Each node contains the post data and a next pointer.
 
 
