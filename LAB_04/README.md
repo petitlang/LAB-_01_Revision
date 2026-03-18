@@ -70,8 +70,43 @@ This function recursively deletes a comment from the thread and performs cascade
 
 ---
 
-## Solution of exercise2_
+## Solution of exercise2__engagement_analysis
 
+max_engagement
+
+This function recursively finds the maximum engagement score.
+If there is only one post, return its score.
+Otherwise, split the array into two halves, compute the maximum in each part, and return the larger one.
+
+sum_engagement
+
+This function recursively calculates the total engagement score.
+It splits the array into two halves and sums both parts, then returns the total.
+
+average_engagement
+
+This function computes the average engagement score.
+It first calls sum_engagement to get the total, then divides by the number of posts.
+
+count_above_threshold
+
+This function recursively counts how many posts have engagement score greater than a given threshold.
+Each recursive call processes part of the array and adds the results.
+
+merge_sort_by_engagement
+
+This function sorts posts by engagement score using merge sort.
+It divides the array into smaller parts, sorts them recursively, and then merges them.
+
+merge
+
+This function merges two sorted subarrays into one sorted array.
+It compares elements and copies them into a temporary list, then copies back.
+
+find_peak_hour
+
+This function finds the index of the peak hour.
+It compares the middle value with its neighbor and decides which half contains the peak.
 
 _
 ## Solution of exercise3_
@@ -151,7 +186,47 @@ _
 
 ## Complexity of exercise2_
 
+max_engagement
 
+Time Complexity: O(n)
+
+Space Complexity: O(log n)
+
+sum_engagement
+
+Time Complexity: O(n)
+
+Space Complexity: O(log n)
+
+average_engagement
+
+Time Complexity: O(n)
+
+Space Complexity: O(log n)
+
+count_above_threshold
+
+Time Complexity: O(n)
+
+Space Complexity: O(log n)
+
+merge_sort_by_engagement
+
+Time Complexity: O(n log n)
+
+Space Complexity: O(n)
+
+merge
+
+Time Complexity: O(n)
+
+Space Complexity: O(n)
+
+find_peak_hour
+
+Time Complexity: O(log n)
+
+Space Complexity: O(log n)
 
 ---
 
