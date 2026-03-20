@@ -109,7 +109,21 @@ This function finds the index of the peak hour.
 It compares the middle value with its neighbor and decides which half contains the peak.
 
 _
-## Solution of exercise3_
+## Solution of exercise3_Converting_Recursion_to_Iteration_with_Explicit_Stack.py
+
+We model comments as a tree where each comment can have multiple replies.
+
+flatten_recursive(comment) uses recursion (DFS) to traverse the comment tree and return a list in depth-first order.
+
+flatten_iterative(comment) uses an explicit stack (comment, state) to simulate recursion and produce the same result. Replies are pushed in reverse order to preserve correct traversal order.
+
+count_comments_tail(comment, accumulator) counts comments recursively by passing a running total.
+
+count_comments_loop(comment) counts comments iteratively using a stack, avoiding recursion.
+
+
+
+
 
 
 
@@ -228,8 +242,46 @@ Time Complexity: O(log n)
 
 Space Complexity: O(log n)
 
+
 ---
 
-## Complexity of exercise3_
+## Complexity of exercise3_Converting_Recursion_to_Iteration_with_Explicit_Stack.py
+
+flatten_recursive(comment)
+Time complexity-O(n)
+Each comment is visited exactly once.
+Space complexity-O(d)
+The recursive call stack grows with the maximum nesting depth.
+
+flatten_iterative(comment)
+Time complexity-O(n)
+Each comment is pushed and popped through the explicit stack in a controlled traversal.
+Space complexity-O(d)
+The explicit stack stores the current traversal path and states.
+Its size depends on the maximum depth of the nested structure.
+
+count_comments_tail(comment, accumulator)
+Time complexity-O(n)
+Each comment is counted once.
+Space complexity-O(d)
+This function is recursive, so the call stack depends on the maximum depth.
+
+count_comments_loop(comment)
+Time complexity-O(n)
+Each comment is popped once and counted once.
+Space complexity-O(d)
+The explicit stack stores comments waiting to be processed along the traversal path.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
