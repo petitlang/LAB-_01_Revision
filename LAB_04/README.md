@@ -247,30 +247,50 @@ Space Complexity: O(log n)
 
 ## Complexity of exercise3_Converting_Recursion_to_Iteration_with_Explicit_Stack.py
 
-flatten_recursive(comment)
-Time complexity-O(n)
+**flatten_recursive(comment)**
+
+-**Time complexity**-O(n)
+
 Each comment is visited exactly once.
-Space complexity-O(d)
+
+**Space complexity**-O(d)
+
 The recursive call stack grows with the maximum nesting depth.
 
-flatten_iterative(comment)
-Time complexity-O(n)
+**flatten_iterative(comment)**
+
+-**Time complexity**-O(n)
+
 Each comment is pushed and popped through the explicit stack in a controlled traversal.
-Space complexity-O(d)
+
+-**Space complexity**-O(d)
+
 The explicit stack stores the current traversal path and states.
+
 Its size depends on the maximum depth of the nested structure.
 
-count_comments_tail(comment, accumulator)
-Time complexity-O(n)
+
+**count_comments_tail(comment, accumulator)**
+
+-**Time complexity**-O(n)
+
 Each comment is counted once.
-Space complexity-O(d)
+
+-**Space complexity**-O(d)
+
 This function is recursive, so the call stack depends on the maximum depth.
 
-count_comments_loop(comment)
-Time complexity-O(n)
+
+**count_comments_loop(comment)**
+
+-**Time complexity-O(n)**
+
 Each comment is popped once and counted once.
-Space complexity-O(d)
+
+-**Space complexity-O(d)**
+
 The explicit stack stores comments waiting to be processed along the traversal path.
+
 
 
 
