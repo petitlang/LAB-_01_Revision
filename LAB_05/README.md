@@ -3,7 +3,7 @@
 /LAB _05/
 ├── exercise1_
 ├── exercise2_tree_traversals.py
-├── exercise3_
+├── exercise3_Generalized_Trees_and_Representations.py
 └── README.md (Team members and assigned exercises, Brief description of each solution, Complexity analysis summary)
 ~~~
 
@@ -52,8 +52,14 @@ Additional analytics functions are implemented to identify the most popular cate
 Overall, the solution demonstrates how different traversal strategies can be used depending on whether the task requires structural processing or aggregation of data.
 
 _
-## Solution of exercise3_
+## Solution of exercise3_Generalized_Trees_and_Representations
 
+This project implements a generalized tree (N-ary tree) structure and its operations, including conversions, traversals, and metrics computation.
+Two conversion methods are implemented. The conversion from a binary tree to a generalized tree interprets the left pointer of the binary tree as the first child node and the right pointer as the next sibling node. The conversion from a generalized tree to a binary tree uses the "first child node / next sibling node" representation, where the left pointer points to the first child node and the right pointer points to the next sibling node. This ensures that both representations maintain the same hierarchical relationship.
+
+Multiple traversal algorithms are provided, including preorder traversal, postorder traversal, and level-order traversal (breadth-first search). Furthermore, the implementation calculates key tree metrics such as tree height, total number of nodes, number of leaf nodes, maximum fan-out degree, and average branch factor.
+
+The implementation also handles special cases such as empty trees, single-node trees, deep (chain-like) structures, and wide or unbalanced trees, ensuring correctness and robustness in different scenarios.
 
 
 
@@ -120,8 +126,20 @@ Space: O(h) recursion + O(n) for the depth map.
 Overall, all algorithms have linear time complexity O(n), with space complexity depending on tree height and whether additional storage is required.
 
 
+
+
+
+
 ---
 
-## Complexity of exercise3_
+## Complexity of exercise3_Generalized_Trees_and_Representations
+All traversal algorithms (pre-order, post-order, and level-order) visit each node exactly once, so their time complexity is O(n), where n is the number of nodes. The space complexity is O(h) for recursive traversals and O(w) for level-order traversal.
+
+The conversion between binary and generalized trees also processes each node once, resulting in a time complexity of O(n). The space complexity is O(n) due to the creation of new nodes in the target representation.
+
+For tree metrics, each function performs a full traversal of the tree, leading to a time complexity of O(n) and a space complexity of O(h).
+
+
+
 
 
