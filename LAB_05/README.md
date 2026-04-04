@@ -31,9 +31,21 @@ Please use **JDK 17 or a higher version**.
 
 #  Brief description of each solution
 
-## Solution of exercise1_
+## Solution of exercise1_binary_tree
 
+This solution implements a binary tree structure to represent social media content categories in a hierarchical way.
 
+First, a CategoryNode class is defined. Each node stores the category id, category name, post count, and references to the left child, right child, and parent node.
+
+Second, several basic binary tree operations are implemented. These include calculating the tree height, counting the total number of nodes, counting the number of leaf nodes, and checking whether the tree is balanced. These functions are mainly based on recursive traversal of the left and right subtrees.
+
+Third, search and path-related functions are provided. The implementation can find a category by its id, compute the path from a target category to the root, calculate the height of a specific node from the root, and determine the lowest common ancestor of two categories.
+
+Furthermore, the solution also verifies different binary tree properties, including whether the tree is full, perfect, or complete, according to the lecture interpretation used in class.
+
+The implementation also includes several test cases, such as an empty tree, a single-node tree, a normal category tree, and an unbalanced tree, in order to verify both normal cases and edge cases.
+
+Overall, this solution shows how a binary tree can be used to model hierarchical category structures and how recursive and level-order methods can be applied to analyze tree properties and relationships between categories.
 
 ---
 
@@ -67,8 +79,41 @@ The implementation also handles special cases such as empty trees, single-node t
 
 # Complexity analysis summary
 
-## Complexity of exercise1_
+## Complexity of exercise1_binary_tree.py
 
+calculate_height(node)
+ 1. Time: O(n), since each node is visited once.
+ Space: O(h) because of recursion.
+count_nodes(node)
+ 2. Time: O(n), because each node is counted once.
+ Space: O(h) due to recursion.
+count_leaves(node)
+ 3. Time: O(n), since all nodes are checked once.
+ Space: O(h) due to recursion.
+is_balanced(node)
+ 4. Time: O(n^2) in the worst case, because the height of subtrees is recalculated many times.
+ Space: O(h) due to recursion.
+find_category(target_id, node)
+ 5. Time: O(n), because the whole tree may need to be searched.
+ Space: O(h) due to recursion.
+find_path_to_root(target_id, root)
+ 6. Time: O(n + h), because it first finds the target node and then moves upward to the root.
+ Space: O(h) for recursion and path storage.
+lowest_common_ancestor(id1, id2, root)
+ 7. Time: O(n + h^2) in this implementation, because two paths are generated and then compared.
+ Space: O(h) for storing the paths.
+calculate_node_height(target_id, root)
+ 8. Time: O(n + h), because it first searches for the node and then follows parent links upward.
+ Space: O(h) due to recursion.
+is_full_binary_tree(node)
+ 9. Time: O(n^2) in the worst case, because subtree heights are recomputed at many nodes.
+ Space: O(h) due to recursion.
+is_perfect_binary_tree(root)
+ 10. Time: O(n), because each node is visited once in level-order traversal.
+ Space: O(n) in the worst case for the queue.
+is_complete_binary_tree(root)
+ 11. Time: O(n), because each node is processed once in level-order traversal.
+ Space: O(n) in the worst case for the queue.
 
 
 ---
