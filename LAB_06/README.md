@@ -1,28 +1,31 @@
 ## File Structure:
-~~~
+
+```
 /LAB _05/
-├── exercise1_
-├── exercise2_
-├── exercise3_
+├── exercise1_Social Graph.py
+├── exercise2_DFS_social_network_analysis.py
+├── exercise3_BFS for Shortest Path Analysis.py
 └── README.md
-~~~
+```
 
 ---
 
 ## Team members and assigned exercises
+
 Team: T14
 
-Mouzheng LI: 2 & 1  
-Yuefan LIU: 3 & 1  
+Mouzheng LI: 2 & 1
+Yuefan LIU: 3 & 1
 
-Collaborate : 1 & Final Question  
+Collaborate : 1 & Final Question
 
 ---
 
 ## Dependencies and Language version
-Please use **python 3.11 or higher version**.  
 
-Please use **JDK 17 or a higher version**.  
+Please use **python 3.11 or higher version**.
+
+Please use **JDK 17 or a higher version**.
 
 ---
 
@@ -33,10 +36,12 @@ Please use **JDK 17 or a higher version**.
 This solution implements a social network using graph data structures.
 
 We represent the graph using:
+
 - Adjacency List (dictionary of users)
 - Adjacency Matrix (2D array)
 
 Main functionalities include:
+
 - Add and remove users and friendships
 - Check if two users are friends
 - Compute degree of a user
@@ -67,6 +72,7 @@ Main functionalities include:
 - Detect isolated users
 
 DFS is used because it explores all nodes in depth and is suitable for:
+
 - exploring components
 - connectivity checking
 - path existence
@@ -104,10 +110,12 @@ BFS is used because it guarantees the shortest path in an unweighted graph and e
 ## Complexity of exercise1_Social Graph.py
 
 Adjacency Matrix:
+
 - Time complexity (are_friends): O(1)
 - Space complexity: O(V²)
 
 Adjacency List:
+
 - Time complexity (are_friends): O(deg(u))
 - Space complexity: O(V + E)
 
@@ -119,6 +127,7 @@ Adjacency list is more space-efficient and suitable for large social networks.
 ## Complexity of exercise2_DFS_social_network_analysis.py
 
 DFS (Adjacency List):
+
 - Time complexity: O(V + E)
 - Space complexity: O(V)
 
@@ -126,9 +135,11 @@ Explanation:
 DFS visits each node once and explores each edge once.
 
 Recursive DFS:
+
 - May cause stack overflow for very large graphs
 
 Iterative DFS:
+
 - Uses explicit stack
 - Avoids recursion problem
 
@@ -140,10 +151,12 @@ DFS is efficient for connectivity and component analysis.
 ## Complexity of exercise3_BFS for Shortest Path Analysis.py
 
 BFS:
+
 - Time complexity: O(V + E)
 - Space complexity: O(V)
 
 Applications:
+
 - Shortest path (optimal in unweighted graph)
 - Degrees of separation
 - k-hop neighbors
