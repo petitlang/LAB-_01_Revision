@@ -116,71 +116,99 @@ Overall, the Segment Tree is well adapted for range queries because it can answe
 
 ---
 
+# Solution of Final Question
+
+
+This solution builds small Python implementations for the four tree-based structures used in the lab: Trie, Heap, BST, and Segment Tree.
+
+The Trie is used to store usernames and supports insert, search, autocomplete, and delete. In the edge-case test, it checks what happens when we try to delete a username that does not exist. The expected behavior is that the Trie stays unchanged and the program returns safely.
+
+The Heap is used to simulate trending posts. It stores posts ordered by likes and supports top-k queries. In the edge-case test, it checks what happens when get_top_k(1000) is called but only 50 posts exist. The program returns all available posts without crashing, and the original heap remains unchanged.
+
+The BST is used to store user profiles by user_id. In the edge-case test, users are inserted in increasing order to create a degenerate chain. Then the program measures the height and prints a warning if the tree becomes too unbalanced.
+
+The Segment Tree is used to store daily activity values and supports updates. In the edge-case test, it checks invalid update indices such as day = -1 or day > n - 1. Invalid updates are rejected safely, while a valid update is applied normally.
+
+The main goal of this solution is not only to implement the structures, but also to verify that they behave correctly in important edge cases.
+
+
+---
+
+
+
 # Complexity analysis summary
 
 ## Complexity of exercise1_binary_search_trees
 
-
 1. insert(user_id, name, friends_list)
-Time:
+   Time:
+
 - Average case: O(log n)
 - Worst case: O(n)
-Space:
+  Space:
 - O(h)
 
 2. find(user_id)
-Time:
+   Time:
+
 - Average case: O(log n)
 - Worst case: O(n)
-Space:
+  Space:
 - O(h)
 
 3. inorder_traversal()
-Time:
+   Time:
+
 - O(n)
-Space:
+  Space:
 - O(h)
 
 4. find_min()
-Time:
+   Time:
+
 - O(h)
-Space:
+  Space:
 - O(1)
 
 5. delete(user_id)
-Time:
+   Time:
+
 - Average case: O(log n)
 - Worst case: O(n)
-Space:
+  Space:
 - O(h)
 
 6. suggest_friends(user_id, max_suggestions)
-Let F be the number of direct friends,
-M be the total number of friend-of-friend checks,
-and s be the number of candidate suggestions.
+   Let F be the number of direct friends,
+   M be the total number of friend-of-friend checks,
+   and s be the number of candidate suggestions.
 
 Time:
+
 - Average case: O(F log n + M + s log s)
 - Worst case: O(Fn + M + s log s)
-Space:
+  Space:
 - O(s)
 
 7. get_height()
-Time:
+   Time:
+
 - O(n)
-Space:
+  Space:
 - O(h)
 
 8. is_balanced()
-Time:
+   Time:
+
 - O(n^2) in this simple implementation
-Space:
+  Space:
 - O(h)
 
 9. get_leaf_count()
-Time:
+   Time:
+
 - O(n)
-Space:
+  Space:
 - O(h)
 
 Overall:
@@ -193,40 +221,41 @@ This also makes suggest_friends slower because it depends on repeated find opera
 ## Complexity of exercise2_
 
 1. push(post_id, likes, timestamp)
-Time:O(log n)
-Space:O(1)
+   Time:O(log n)
+   Space:O(1)
 2. pop_max()
-Time:O(log n)
-Space:O(1)
+   Time:O(log n)
+   Space:O(1)
 3. peek_max()
-Time:O(1)
-Space:O(1)
+   Time:O(1)
+   Space:O(1)
 4. get_top_k(k)
-Time:O(k log n)
-Space:O(n)
+   Time:O(k log n)
+   Space:O(n)
 5. update_likes(post_id, new_likes, timestamp)
-Time:O(n) in this simple implementation
-Space:O(1)
+   Time:O(n) in this simple implementation
+   Space:O(1)
 6. size()
-Time:O(1)
-Space:O(1)
+   Time:O(1)
+   Space:O(1)
 7. is_valid_heap()
-Time:O(n)
-Space:O(1)
+   Time:O(n)
+   Space:O(1)
 8. get_height()
-Time:O(1)
-Space:O(1)
+   Time:O(1)
+   Space:O(1)
 9. get_level_order()
-Time:O(n)
-Space:O(n)
+   Time:O(n)
+   Space:O(n)
 10. simulate_trending_feed()
-Time:Dominated by repeated updates and queries
-Space:O(n)
+    Time:Dominated by repeated updates and queries
+    Space:O(n)
 
 Overall:
+
 - The max-heap is efficient for maintaining trending posts because the most liked post is always at the root.
-Insertion and deletion of the maximum value both take O(log n), while reading the maximum takes O(1).
-It is more efficient than sorting all posts every time, especially when only the top few results are required.
+  Insertion and deletion of the maximum value both take O(log n), while reading the maximum takes O(1).
+  It is more efficient than sorting all posts every time, especially when only the top few results are required.
 
 ---
 
@@ -235,65 +264,138 @@ It is more efficient than sorting all posts every time, especially when only the
 ### Part A – Trie for Autocomplete
 
 1. insert(username, user_id)
-Let m be the length of the username.
-Time:O(m)
-Space:O(m) in the worst case
+   Let m be the length of the username.
+   Time:O(m)
+   Space:O(m) in the worst case
 2. search(username)
-Time:O(m)
-Space:O(1)
+   Time:O(m)
+   Space:O(1)
 3. starts_with(prefix)
-Time:O(m)
-Space:O(1)
+   Time:O(m)
+   Space:O(1)
 4. autocomplete(prefix, max_results)
-Let p be the prefix length and k the number of returned results.
-Time:O(p + k)
-Space:O(k + h)
+   Let p be the prefix length and k the number of returned results.
+   Time:O(p + k)
+   Space:O(k + h)
 5. delete(username)
-Time:O(m)
-Space:O(m) in the recursive version
+   Time:O(m)
+   Space:O(m) in the recursive version
 6. count_words()
-Time:O(n)
-Space:O(h)
+   Time:O(n)
+   Space:O(h)
 7. get_height()
-Time:O(n)
-Space:O(h)
+   Time:O(n)
+   Space:O(h)
 8. get_total_nodes()
-Time:O(n)
-Space:O(h)
+   Time:O(n)
+   Space:O(h)
 
 Overall for Part A:
+
 - The Trie is efficient for exact search and especially for prefix search.
-Unlike a hash map, it naturally supports autocomplete and search-as-you-type operations.
-Its main cost is memory usage, because many nodes may be created when many usernames are stored.
+  Unlike a hash map, it naturally supports autocomplete and search-as-you-type operations.
+  Its main cost is memory usage, because many nodes may be created when many usernames are stored.
 
 ### Part B – Segment Tree for Activity Range Queries
 
 1. build(activity_array)
-Time:O(n)
-Space:O(n)
-query(l, r)
+   Time:O(n)
+   Space:O(n)
+   query(l, r)
 2. Time:O(log n)
-Space:O(log n)
+   Space:O(log n)
 3. get_range_max(l, r)
-Time:O(log n)
-Space:O(log n)
+   Time:O(log n)
+   Space:O(log n)
 4. get_range_min(l, r)
-Time:O(log n)
-Space:O(log n)
+   Time:O(log n)
+   Space:O(log n)
 5. get_tree_size()
-Time:O(1)
-Space:O(1)
+   Time:O(1)
+   Space:O(1)
 6. get_height()
-Time:O(1)
-Space:O(1)
+   Time:O(1)
+   Space:O(1)
 7. get_leaf_values()
-Time:O(n)
-Space:O(n)
+   Time:O(n)
+   Space:O(n)
 8. simulate_activity()
-Time:O(n) for building + O(log n) per query
-Space:O(n)
+   Time:O(n) for building + O(log n) per query
+   Space:O(n)
 
 Overall for Part B:
+
 - The Segment Tree is efficient for range queries because it avoids scanning the entire array for each request.
-Compared with a prefix sum array, it is better when updates or different range queries happen frequently.
-It is therefore well suited for activity monitoring over time.
+  Compared with a prefix sum array, it is better when updates or different range queries happen frequently.
+  It is therefore well suited for activity monitoring over time.
+
+---
+
+
+
+# Complexity of Final Question
+
+
+Complexity analysis summary
+
+1. Trie
+   Main operations used:
+
+- insert(username, user_id): O(m)
+- search(username): O(m)
+- delete(username): O(m)
+
+Here, m is the length of the username.
+
+In the edge-case test, deleting a non-existing username first uses search and then stops safely.
+So the total time is O(m).
+Space complexity is O(m) in the recursive delete case, because of recursion depth.
+
+2. Heap
+   Main operation used:
+
+- get_top_k(k): O(k log n)
+
+Here, n is the number of posts in the heap.
+
+In the test case, k = 1000 but only 50 posts exist.
+So the real cost is O(50 log 50), because only 50 elements can be removed from the copied heap.
+The extra space is O(n) because a copy of the heap is created.
+
+3. BST
+   Main operations used:
+
+- insert(user_id, name, friends_list):
+  average O(log n), worst case O(n)
+- get_height():
+  O(n)
+
+In the edge-case test, users are inserted in increasing order, so the BST becomes skewed.
+That means insertion degrades to O(n) per insert.
+If n users are inserted in sorted order, the total build cost becomes O(n^2).
+
+The height computation costs O(n).
+The warning check itself is O(1) after height is computed.
+
+4. Segment Tree
+   Main operation used:
+
+- update(day, value): O(log n)
+
+Before the update, the program checks whether the index is valid.
+This boundary check is O(1).
+
+So:
+
+- invalid update: O(1), because it is rejected immediately
+- valid update: O(log n)
+
+Space complexity of the Segment Tree is O(n), usually implemented with an array of size about 4n.
+
+Overall summary
+The edge-case tests confirm that:
+
+- Trie operations fail safely on missing usernames
+- Heap top-k works correctly even when k is larger than the heap size
+- BST can become inefficient in bad insertion orders, and this can be detected
+- Segment Tree safely rejects invalid indices and still handles valid updates efficiently
