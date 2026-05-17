@@ -4,7 +4,7 @@
 /LAB _09/
 ├── exercise1_influencer_coverage.py
 ├── exercise2_
-├── exercise3_
+├── exercise3_ad_campaign_optimization.py
 ├── final_question.py
 
 └── README.md
@@ -34,7 +34,6 @@ Please use **JDK 17 or a higher version**.
 # Brief description of each solution
 
 ## Solution of exercise1_influencer_coverage
-
 
 1. is_valid_coverage(selected_users, graph)
 
@@ -106,33 +105,203 @@ This makes it easy to verify whether the functions behave correctly.
 
 ---
 
-
-
 ## Solution of exercise2_
 
+---
 
+## Solution of exercise3_ad_campaign_optimization
+
+1. maximize_reach(budget, costs, influences)
+
+This function finds the maximum total influence that can be obtained within a fixed budget.
+It uses dynamic programming to solve the 0/1 knapsack problem.
+
+The algorithm builds a table where:
+
+- rows represent how many users have been considered
+- columns represent the available budget
+
+For each user, the function decides whether to:
+
+- skip that user, or
+- include that user if the cost fits the current budget
+
+At the end, it reconstructs one optimal selection of users by walking backward through the DP table.
+
+This method gives the exact best result, but it becomes expensive when the budget is large.
+
+2. is_within_budget(selection, costs, budget)
+
+This function checks whether a chosen set of users stays inside the budget.
+It adds the costs of all selected users and compares the total with the budget.
+
+If the total cost is less than or equal to the budget, it returns True.
+Otherwise, it returns False.
+
+This helper is useful for validating a candidate solution.
+
+3. fast_alternative_strategy(budget, costs, influences)
+
+This function finds a fast approximate solution using a greedy strategy.
+It computes the influence-to-cost ratio for each user, then sorts users by that ratio.
+
+After sorting, it selects users one by one while the remaining budget is enough.
+Users with a higher influence per cost are considered first.
+
+This method is much faster than dynamic programming, but it does not always give the exact optimal answer.
+
+4. compare_strategies(budget, costs, influences)
+
+This function compares the exact dynamic programming solution and the greedy solution on the same input.
+It runs maximize_reach(...) and fast_alternative_strategy(...), then prints:
+
+- the maximum influence found by each method
+- the selected users
+- whether the greedy result matches the exact result
+
+The purpose of this function is to show the difference between an exact algorithm and an approximate algorithm.
+
+5. Test Set for Edge Cases in main()
+
+The main() function is used to test the algorithm on special cases.
+These edge cases help check whether the program works correctly in simple or unusual situations.
+
+The test cases include:
+
+- empty input
+- budget equal to 0
+- all costs larger than the budget
+- single user that fits exactly
+- single user that does not fit
+- multiple optimal selections
+- a case where greedy fails but DP succeeds
+- budget validation helper
+- a case where both methods give the same answer
+
+For each case, the program prints:
+
+- the input values
+- the expected result
+- the real result
+
+This makes it easy to verify whether the functions behave correctly.
+
+---
+
+## Complexity of exercise3_
+
+1. maximize_reach(budget, costs, influences)
+
+Time Complexity
+ O(N * B)
+
+Reason:
+ The function fills a dynamic programming table with N items and B budget values.
+ Each cell is computed once, so the total work is proportional to N multiplied by B.
+
+Space Complexity
+ O(N * B)
+
+Reason:
+ The DP table stores one value for every combination of item count and budget.
+
+2. is_within_budget(selection, costs, budget)
+
+Time Complexity
+ O(K)
+
+Reason:
+ The function scans every selected user once and sums their costs.
+ K is the number of selected users.
+
+Space Complexity
+ O(1)
+
+Reason:
+ It only uses a small number of variables to compute the total cost.
+
+3. fast_alternative_strategy(budget, costs, influences)
+
+Time Complexity
+ O(N log N)
+
+Reason:
+ The function computes a ratio for each user and sorts all users by that ratio.
+ The sorting step dominates the running time.
+
+Space Complexity
+ O(N)
+
+Reason:
+ It stores the ratio list and the selected users list.
+
+4. compare_strategies(budget, costs, influences)
+
+Time Complexity
+ O(N * B)
+
+Reason:
+ The function runs both the exact DP solution and the greedy solution.
+ The dynamic programming method dominates the total running time.
+
+Space Complexity
+ O(N * B)
+
+Reason:
+ The space usage is dominated by the DP table created by maximize_reach(...).
+
+5. total_cost(selection, costs)
+
+Time Complexity
+ O(K)
+
+Reason:
+ The helper loops through the selected users once and adds their costs.
+
+Space Complexity
+ O(1)
+
+Reason:
+ It only uses a single accumulator variable.
+
+Overall summary
+
+maximize_reach(...)
+ Time: O(N * B)
+ Space: O(N * B)
+
+is_within_budget(...)
+ Time: O(K)
+ Space: O(1)
+
+fast_alternative_strategy(...)
+ Time: O(N log N)
+ Space: O(N)
+
+compare_strategies(...)
+ Time: O(N * B)
+ Space: O(N * B)
+
+total_cost(...)
+ Time: O(K)
+ Space: O(1)
+
+Conclusion:
+ The exact dynamic programming solution always finds the best influence value within the budget, but its cost grows with the budget size.
+ The greedy solution is much faster and simpler, but it only provides an approximation and may miss the optimal combination.
 
 ---
 
 
-
-## Solution of exercise3_
-
-
-
----
 
 # Solution of Final Question
 
 
 ---
 
-
-
 # Complexity analysis summary
 
 ## Complexity of exercise1_influencer_coverage
-
 
 1. is_valid_coverage(selected_users, graph)
 
@@ -200,40 +369,133 @@ Reason:
 
 Overall summary
 
-is_valid_coverage(...)
- Time: O(N + E)
- Space: O(N)
-
-find_minimum_coverage(...)
- Time: O(2^N * (N + E))
- Space: O(N)
-
-find_fast_coverage(...)
- Time: O(N * (N + E))
- Space: O(N)
-
-compare_coverage(...)
- Time: O(2^N * (N + E))
- Space: O(N)
-
-Conclusion:
- The exact solution is correct but very expensive, so it is only suitable for small graphs.
- The greedy solution is much faster and more practical for large graphs, but it does not always guarantee the minimum result.
-
-
----
-
 ## Complexity of exercise2_
 
+---
 
+## Complexity of exercise3_ad_campaign_optimization
+
+1. maximize_reach(budget, costs, influences)
+
+Time Complexity
+ O(N * B)
+
+Reason:
+ The function fills a dynamic programming table with N items and B budget values.
+ Each cell is computed once, so the total work is proportional to N multiplied by B.
+
+Space Complexity
+ O(N * B)
+
+Reason:
+ The DP table stores one value for every combination of item count and budget.
+
+2. is_within_budget(selection, costs, budget)
+
+Time Complexity
+ O(K)
+
+Reason:
+ The function scans every selected user once and sums their costs.
+ K is the number of selected users.
+
+Space Complexity
+ O(1)
+
+Reason:
+ It only uses a small number of variables to compute the total cost.
+
+3. fast_alternative_strategy(budget, costs, influences)
+
+Time Complexity
+ O(N log N)
+
+Reason:
+ The function computes a ratio for each user and sorts all users by that ratio.
+ The sorting step dominates the running time.
+
+Space Complexity
+ O(N)
+
+Reason:
+ It stores the ratio list and the selected users list.
+
+4. compare_strategies(budget, costs, influences)
+
+Time Complexity
+ O(N * B)
+
+Reason:
+ The function runs both the exact DP solution and the greedy solution.
+ The dynamic programming method dominates the total running time.
+
+Space Complexity
+ O(N * B)
+
+Reason:
+ The space usage is dominated by the DP table created by maximize_reach(...).
+
+5. total_cost(selection, costs)
+
+Time Complexity
+ O(K)
+
+Reason:
+ The helper loops through the selected users once and adds their costs.
+
+Space Complexity
+ O(1)
+
+Reason:
+ It only uses a single accumulator variable.
+
+Overall summary
+
+maximize_reach(...)
+ Time: O(N * B)
+ Space: O(N * B)
+
+is_within_budget(...)
+ Time: O(K)
+ Space: O(1)
+
+fast_alternative_strategy(...)
+ Time: O(N log N)
+ Space: O(N)
+
+compare_strategies(...)
+ Time: O(N * B)
+ Space: O(N * B)
+
+total_cost(...)
+ Time: O(K)
+ Space: O(1)
+
+Conclusion:
+ The exact dynamic programming solution always finds the best influence value within the budget, but its cost grows with the budget size.
+ The greedy solution is much faster and simpler, but it only provides an approximation and may miss the optimal combination.
 
 ---
 
-## Complexity of exercise3_
+ Time: O(K)
+ Space: O(1)
 
+fast_alternative_strategy(...)
+ Time: O(N log N)
+ Space: O(N)
+
+compare_strategies(...)
+ Time: O(N * B)
+ Space: O(N * B)
+
+total_cost(...)
+ Time: O(K)
+ Space: O(1)
+
+Conclusion:
+ The exact dynamic programming solution always finds the best influence value within the budget, but its cost grows with the budget size.
+ The greedy solution is much faster and simpler, but it only provides an approximation and may miss the optimal combination.
 
 ---
-
-
 
 # Complexity of Final Question
